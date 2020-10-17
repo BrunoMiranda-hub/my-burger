@@ -1,0 +1,21 @@
+.burger {
+  height: 300px;
+  width: 300px;
+  margin: auto;
+}
+.checkout {
+  text-align: center;
+  margin: auto;
+  width: 100%;
+}
+.buttons {
+  width: 100%;
+  text-align: center;
+  background: crimson;
+}
+
+@media (min-width: 600px) {
+  .checkOut {
+    width: 500px;
+  }
+}
