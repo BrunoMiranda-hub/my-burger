@@ -21,17 +21,8 @@ const IngridientsPrice = {
 
 class BurgerBuilder extends Component {
     state = {
-        ingredients: {
-            Bacon: 0,
-            Cheese: 0,
-            Meat: 0,
-            Salad: 0
-
-        },
+       
         price: 200,
-
-        
-
         purchasable: false,
         purchasing: false,
         loading: false,
@@ -52,7 +43,7 @@ class BurgerBuilder extends Component {
 
     }
 
-
+    
     updatePurchaseState = (Ingredients) => {
 
         const suma = Object.keys(Ingredients)
@@ -143,9 +134,11 @@ class BurgerBuilder extends Component {
         })
     }
 
+
     render() {
+       console.log(this)
         const disableInfo = {
-            ...this.state.ingredients
+            ...this.props.ings
         }
         
         for (let key in disableInfo) {
@@ -157,14 +150,17 @@ class BurgerBuilder extends Component {
 
 
         let burger = <Spinner />
-              
-        if (this.state.ingredients) {
+    //en este if pregunta si el ings esta vacio o no, xq antes lo traia de una base de datos.
+    //Ahora le esta preguntando al estado de redux si esta vacio o no y ahora no me muestra la hamburguesa queda
+    //el spinner por que no encuentra el estado, entendes lo que quiero decir?          
+        if (this.props.ings.ingredients) {
+            debugger
             burger = (
                 <div>
-                    <Burger ingredients={this.state.ingredients} />
+                    <Burger ingredients={this.props.ings.ingredients} />
                     <BuildControls
-                        agregarIngredientes={this.agregarIngrediente}
-                        borrarIngredientes={this.borrarIngrediente}
+                        agregarIngredientes={this.props.onIngredientAdded}
+                        borrarIngredientes={this.props.onIngredientRemoved}
                         disable={disableInfo}
                         purchasable={this.state.purchasable}
                         prices={this.state.price}
@@ -174,18 +170,18 @@ class BurgerBuilder extends Component {
                     />
                 </div>
             )
-            orderSumamary = <Ordersummary
-                ingredients={this.state.ingredients}
+            /*orderSumamary = <Ordersummary
+                ingredients={this.props.ings}
                 cancel={this.purchaseCancelHandler}
                 continue={this.purchaseContinueHandler}
                 price={this.state.price}
-            />
+            />*/
 
         }
         if (this.state.loading) {
             orderSumamary = <Spinner />
         }
-
+    console.log(this.props)
         return (
             <div>
                 <Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHandler}>

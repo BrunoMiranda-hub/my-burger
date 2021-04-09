@@ -1,4 +1,5 @@
 import * as actionType from "../Store/actionType"
+import { combineReducers } from 'redux'
 
 const initialState = {
 
@@ -21,7 +22,8 @@ const burgerReducer = (state = initialState, action) => {
             state = {
                 ...state,
                 ingredients: {
-                    ...state.ingredients
+                    ...state.ingredients,
+                    [action.ingredientName]: state.ingredients[action.ingredientName] + 1
                 }
             }
             break;
@@ -29,7 +31,8 @@ const burgerReducer = (state = initialState, action) => {
             state ={
                 ...state,
                 ingredients:{
-                    
+                    ...state.ingredients,
+                    [action.ingredientName]: state.ingredients[action.ingredientName] - 1
                 }
             }
             
@@ -42,7 +45,9 @@ const burgerReducer = (state = initialState, action) => {
     }
     return state
 }
-export default burgerReducer
+export default combineReducers({
+    ings:burgerReducer
+  })
 
 
 

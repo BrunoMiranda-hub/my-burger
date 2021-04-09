@@ -20,11 +20,11 @@ const buildControls = (props)=>{
                 label ={ctr.label} 
                 agregar = {()=>props.agregarIngredientes(ctr.type)}
                 borrar = {()=>props.borrarIngredientes(ctr.type)}
-                //no lo entiendo, por que usa el ctr.type!!
+                
                 disable = {props.disable[ctr.type]}
                 />
             })}
-    {/* no me acuerdo por que hizo esto!! */}
+    
             <button 
             className = {clases.OrderButton}
             disabled = { !props.purchasable}

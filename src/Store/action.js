@@ -1,14 +1,15 @@
 import * as actionType from "../Store/actionType"
 
-export const addIngredient = ()=>{
-
+export const addIngredient = (ingName)=>{
      return{
-         type:actionType.ADD_INGREDIENT
+         type:actionType.ADD_INGREDIENT,
+         ingredientName: ingName,
      }  
 }
 
-export const removeIngredient = ()=>{
+export const removeIngredient = (ingName)=>{
     return {
-        type : actionType.REMOVE_INGREDIENT
+        type : actionType.REMOVE_INGREDIENT,
+        ingredientName: ingName,
     }
 }

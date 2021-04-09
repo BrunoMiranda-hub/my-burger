@@ -3,20 +3,24 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-import {BrowserRouter} from "react-router-dom"
-import {createStore} from "redux"
+import { BrowserRouter } from "react-router-dom"
+import { createStore,applyMiddleware } from "redux"
 import reducer from "../src/Store/reducer"
 import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
 
 
-const store = createStore(reducer) 
+const store = createStore(reducer,applyMiddleware(thunk))
+//console.log(store.getState())
 
 const app = (
-    <Provider store = {store}>
-        <BrowserRouter>
-            <App/>
-        </BrowserRouter>    
-    </Provider>
+
+    <BrowserRouter>
+        <Provider store={store}>
+            <App />
+        </Provider>
+    </BrowserRouter >    
+    
 )
 
 
