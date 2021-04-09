@@ -154,7 +154,7 @@ class BurgerBuilder extends Component {
     //Ahora le esta preguntando al estado de redux si esta vacio o no y ahora no me muestra la hamburguesa queda
     //el spinner por que no encuentra el estado, entendes lo que quiero decir?          
         if (this.props.ings.ingredients) {
-            debugger
+            
             burger = (
                 <div>
                     <Burger ingredients={this.props.ings.ingredients} />

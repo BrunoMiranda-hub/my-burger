@@ -48,6 +48,7 @@ const burgerReducer = (state = initialState, action) => {
 export default combineReducers({
     ings:burgerReducer
   })
+  //El reducer es el que se encarga 
 
 
 
